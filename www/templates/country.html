@@ -1,0 +1,20 @@
+<ion-view>
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="country in countries" ng-click="selectThisCountry($index)">
+        <div>
+          <div class="menuFlag">
+          <img  src="{{country.flag}}">
+          </div>
+          <div class="countryName">{{country.name}}</div>
+          <div class="check1" ng-show="country.selected">
+            <i class="icon ion-ios-checkmark"></i>
+          </div>
+          <div class="check2" ng-hide="country.selected">
+            <i class="icon ion-ios-checkmark-outline"></i>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

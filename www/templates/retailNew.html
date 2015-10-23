@@ -1,0 +1,81 @@
+<ion-view title="<img class='title-image' src='img/logo.png' >">
+  <ion-content>
+
+
+    <div ng-repeat="aItem in aItems">
+      <ul rn-carousel class="image">
+        <li ng-repeat="image in aItem.pictureURLs">
+
+          <img src="{{imageLocation}}{{image.url}}">
+
+        </li>
+      </ul>
+      <div class="list card energized-100-bg">
+
+        <div class="item item-avatar">
+          <img src="{{aItem.tenant.logo}}">
+
+          <div class="itemHeader">{{aItem.name}}</div>
+
+          <p>{{aItem.tenant.companyName}}</p>
+        </div>
+
+
+        <div class="item item-image">
+          <ion-slide-box show-pager="{{shouldShow(false)}}">
+            <ion-slide ng-repeat="image in aItem.pictureURLs">
+              <img src="{{imageLocation}}{{image.url}}">
+
+              <div style="color: #00317d">
+                Image: {{image.title}}
+              </div>
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+        <div class="item item-text-wrap">
+          {{aItem.description}}
+        </div>
+
+
+        <div  ng-repeat="category in aItem.varianceFields">
+          <md-input-container>
+            <label>{{category.categoryName}}</label>
+            <md-select ng-model="options[$index]">
+              <md-option ng-repeat="varianceValue in category.varianceValues" value="{{varianceValue.value}}"
+                         selected="$index==0">
+                {{varianceValue.value}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <div class="item item-icon-left positive" style="display: inline-block; width: 50%">
+          <i class="icon ion-information-circled"></i>
+          ${{adjustedPrice(aItem.onlinePrice )| number:$storage.decimal}} {{$storage.currency}}
+        </div>
+        <div style="float: right; padding-right: 10px">
+          <!--<button class="button button-assertive" ng-click="addToCart">Add to cart</button>-->
+
+          <ngcart-addtocart id="{{aItem.id}}" name="biggerArray[$index]" price="{{aItem.onlinePrice}}" data="aItem" ng-disabled="inart()">
+            Add To Cart
+          </ngcart-addtocart>
+
+        </div>
+      </div>
+    </div>
+
+    STILL TO BE ADDED :
+    1)CHECK FOR A&P
+    <!--2)REGISTERING IN DATABASE-->
+    <!--3)CHECK FOR QUANTITY-->
+    <!--3)Credit Card-->
+    4)Settings Menu
+    <!--5)Item Details-->
+    <!--6)Item then list by shop (Filtered View) (For individual items, that can be the item details page-->
+    7)Add option to remove payment option!!!
+    8)Ability to add different variants of the same item
+
+
+    SERVICE SIDE STILL NOT DONE!
+  </ion-content>
+</ion-view>

@@ -1,0 +1,90 @@
+<ion-view view-title="Welcome to Merlion Mall Asia!">
+  <ion-content style="background: url(img/bg1.png) center; background-size: cover;" has-bouncing="false">
+    <!--<div class="hero no-header flat">-->
+      <!--<div class="content">-->
+        <!--<div class="app-icon"><img src="img/logo2.png"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="padding">
+
+      <form ng-submit="registered()" name="regForm" ng-controller="RegisterCtrl">
+        <div class="list" style="padding-right:30px">
+          <label class="item item-input item-md-label" placeholder="Email">
+            <input type="email" class="md-input used" ng-model="regForm.user"
+                   required name="email" rc-mailgun-valid>
+            <div class="input-label"> Email <span ng-show="regForm.email.$error.rcMailgunEmailValid">(Invalid Email Address!)</span>
+              <span ng-show="regForm.email.$error.rcMailgunInProgress" style="color: white;">(Validating Email)</span>
+
+
+            </div>
+
+            <div class="highlight highlight-balanced"></div>
+
+            <md-progress-linear ng-show="regForm.email.$error.rcMailgunInProgress" md-mode="indeterminate" style="float:right"></md-progress-linear>
+          </label>
+
+
+          <label class="item item-input item-md-label" placeholder="Password">
+            <input type="password" class="md-input used"
+                   ng-model="regForm.password" aria-invalid="false" required>
+            <span class="input-label">Password</span>
+
+            <div class="highlight highlight-balanced"></div>
+          </label>
+          <label class="item item-input item-md-label" placeholder="First Name">
+            <input type="text" class="md-input used"
+                   ng-model="regForm.firstName" aria-invalid="false" style="" required>
+            <span class="input-label">First Name</span>
+
+            <div class="highlight highlight-balanced"></div>
+          </label>
+          <label class="item item-input item-md-label" placeholder="Last Name">
+            <input type="text" class="md-input used"
+                   ng-model="regForm.lastName" aria-invalid="false" style="" required>
+            <span class="input-label">Last Name</span>
+
+            <div class="highlight highlight-balanced"></div>
+          </label>
+
+          <div ng-click="genderPopup()">
+          <label class="item item-input item-md-label " placeholder="Gender">
+            <input disabled type="text" class="md-input used"
+                   aria-invalid="false" required
+              value="{{gender}}">
+            <span class="input-label">Gender</span>
+
+            <div class="highlight highlight-balanced"></div>
+          </label>
+          </div>
+
+          <ionic-datepicker input-obj="datepickerObject">
+            <label class="item item-input item-md-label"
+                   placeholder="Date of Birth">
+              <input disabled
+                     type="text" class="md-input used"
+                     value="{{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}"
+                >
+              <span class="input-label">Date of Birth</span>
+
+              <div class="highlight highlight-calm"></div>
+            </label>
+
+
+          </ionic-datepicker>
+
+          <div class="padding">
+            <button type="submit" ng-click="submit()" ng-disabled="regForm.$invalid || datepickerObject.inputDate == null || gender == null"
+                    class="button button-full button-balanced"><i
+              class="icon ion-ios-compose"></i> Register
+            </button>
+          </div>
+        </div>
+
+
+      </form>
+
+
+    </div>
+
+  </ion-content>
+</ion-view>

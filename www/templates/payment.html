@@ -1,0 +1,67 @@
+<ion-view>
+
+  <ion-content>
+
+
+    <ion-item class="settingItem" style="text-align: center">
+      Payment Information - We prefer
+      <div>
+        <image src="img/visa.png" class="creditCard"></image>
+        <image src="img/mastercard.png" class="creditCard"></image>
+        <image src="img/amex.png" class="creditCard"></image>
+      </div>
+
+    </ion-item>
+
+    <form stripe-form="stripeIt"
+            name="cardForm"
+            id="cardForm"
+            data-card
+            data-width="100%"
+            data-card-container="#card-container"
+            data-placeholders="cardPlaceholders"
+            data-options="cardOptions"
+            data-messages="cardMessages"
+            style="padding-left: 30px;"
+        >
+
+
+        <md-input-container>
+          <span style="color: red;" ng-show="cardForm.CardNumber.$invalid && number!=''">Credit Card number is invalid</span>
+          <label>Card Number</label>
+          <input type="text" name="CardNumber" card-number data-ng-model="number"
+                 payments-validate="card" payments-format="card" payments-type-model="type" required novalidate=""/>
+
+        </md-input-container>
+
+        <md-input-container>
+          <span style="color: red;" ng-show="cardForm.CardName.$invalid && name!=''">Cardholder name is required</span>
+          <label>Cardholder Name</label>
+          <input type="text" name="CardName" card-name data-ng-model="name" required/>
+        </md-input-container>
+
+        <md-input-container>
+          <span style="color: red;" ng-show="cardForm.CardExpiry.$invalid && expiry!=''">Expiry Date is invalid</span>
+          <label>MM / YY[YY]</label>
+          <input type="text" name="CardExpiry" card-expiry data-ng-model="expiry"
+                 payments-validate="expiry" payments-format="expiry" required/>
+        </md-input-container>
+
+        <md-input-container>
+          <span style="color: red;" ng-show="cardForm.CardCvc.$invalid && cvc!=''">CVC is invalid!</span>
+          <label>CVC</label>
+          <input type="text" name="CardCvc" card-cvc data-ng-model="cvc" payments-validate="cvc"
+                 payments-format="cvc" required payments-type-model="type"/>
+        </md-input-container>
+
+
+
+    <div id="card-container" style="float:left;"></div>
+
+
+    </form>
+
+    <button class="button button-energized button-block" form="cardForm" ng-disabled="cardForm.$invalid" type="submit">Continue</button>
+
+  </ion-content>
+</ion-view>

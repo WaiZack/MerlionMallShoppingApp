@@ -1,0 +1,64 @@
+
+<md-dialog aria-label="Mango (Fruit)" ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 style="color: #FFF;">My Merlion Tier Progress</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <div class="tierDisplay">
+        <div class=row>
+          <div class="col">
+            <b>Tier name</b>
+          </div>
+          <div class="col">
+            <b>Threshold</b>
+          </div>
+        </div>
+
+        <div class="row" ng-repeat="tier in $storage.allTiers">
+          <div class="col">
+            {{tier.name}}
+          </div>
+          <div class="col">
+            {{tier.threshold}}
+          </div>
+        </div>
+        <div>Merlion Stars this membership year : <b><span count-to="{{totalStars}}" value="0" duration="1"></span></b></div>
+        <br>
+
+      </div>
+
+      <div style="padding-bottom: 20px">
+        <div>
+          Path to {{$storage.allTiers[1].name}}
+        </div>
+        <isteven-omni-bar current-value="totalStars" max-value="maxValue1" current-style="silverTier">
+          {{totalStars / maxValue1 * 100 | number:0}}%
+        </isteven-omni-bar>
+        <div style="color:silver;"><b>Points Needed : {{maxValue1 - totalStars >0 ? maxValue1-totalStars : 0}}</b></div>
+      </div>
+
+      <div>
+        <div>
+          Path to {{$storage.allTiers[2].name}}
+        </div>
+        <isteven-omni-bar current-value="totalStars" max-value="maxValue2" current-style="goldTier">
+          {{totalStars / maxValue2 * 100 | number:0}}%
+        </isteven-omni-bar>
+        <div style="color:goldenrod"><b>Points Needed : {{maxValue2 - totalStars >0 ? maxValue2-totalStars : 0}}</b></div>
+      </div>
+    </md-dialog-content>
+
+
+    <div class="md-actions">
+      <md-button class="md-raised md-primary" ng-click="cancel()">
+        Got it!
+      </md-button>
+    </div>
+
+  </form>
+</md-dialog>
+

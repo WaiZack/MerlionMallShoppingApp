@@ -1,0 +1,25 @@
+{
+  "name": "isteven-angular-omni-bar",
+  "version": "1.0.1",
+  "main": [
+    "angular-omni-bar.js",
+    "angular-omni-bar.css"
+  ],
+  "ignore": [
+    ".git",
+    ".gitignore",
+    "bower.json",
+    "README.md"
+  ],
+  "homepage": "https://github.com/isteven/angular-omni-bar",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "4d40a14f7593d6468af895003c8f292f2bdad582"
+  },
+  "_source": "git://github.com/isteven/angular-omni-bar.git",
+  "_target": "~1.0.1",
+  "_originalSource": "angular-omni-bar",
+  "_direct": true
+}

@@ -1,0 +1,32 @@
+<ion-view>
+
+  <ion-content>
+
+    <ion-item class="settingItem" style="text-align: center">
+      Choose a payment method
+    </ion-item>
+
+
+    <div ng-controller="ChoiceCtrl">
+      <md-radio-group class="md-primary" ng-model="ccChoice">
+        <md-radio-button ng-repeat="token in tokens" ng-value="token">
+          <strong> {{token.sources.data[0].brand}} - **** {{token.sources.data[0].last4}}</strong>
+          <br>
+          {{token.sources.data[0].name}}
+          <br>
+          Expires {{token.sources.data[0].expMonth}}/{{token.sources.data[0].expYear}}
+
+
+        </md-radio-button>
+        <md-radio-button value=''>
+          Add new payment method
+        </md-radio-button>
+
+      </md-radio-group>
+
+    <button class="button button-energized button-block" ng-disabled="ccChoice == null" ng-click="cardChosen()">Continue</button>
+      </div>
+
+
+  </ion-content>
+</ion-view>

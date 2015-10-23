@@ -1,0 +1,12 @@
+<!--<div ng-hide="attrs.id">-->
+    <!--<a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>-->
+
+<!--</div>-->
+<div ng-show="attrs.id">
+    <div>
+        <button class="button button-assertive"
+           ng-click="ngCart.addItem(id, name, price,q, data)"
+           ng-transclude ng-hide="inCart()" style="width:100px"></button>
+      <button class="button button-assertive" ng-show="inCart()" ng-disabled="true" style="width:100px">In Cart</button>
+    </div>
+</div>

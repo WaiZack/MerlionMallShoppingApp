@@ -1,0 +1,96 @@
+
+<ion-content>
+  <div class="empty-cart-div" ng-show="ngCart.getTotalItems() === 0">
+    <h3 class='empty-cart-header'>Your Shopping Cart is Empty!</h3>  <i class='icon ion-ios-cart empty-cart-icon'></i>
+  </div>
+
+
+  <div class="checkout" ng-show="ngCart.getTotalItems() > 0" ng-controller="RightMenuCtrl">
+    <div class="checkoutText">
+      Subtotal : {{ngCart.totalCost() / $storage.exchangeRate | number:$storage.decimal}} {{$storage.currency}}
+    </div>
+    <div>
+      <a>
+        <button class="checkoutButton button button-energized-100" ng-click="checkout()" menu-toggle="right">
+          Checkout
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <div style="padding-bottom: 90px"></div>
+
+
+  <div ng-repeat="item in ngCart.getCart().items track by $index" ng-show="ngCart.getTotalItems() > 0"
+       ng-controller="RightMenuCtrl">
+
+    <div class="cartItem">
+      <div class="cartItemText">
+
+
+        <h3>{{item.getData().name}}</h3>
+
+
+        <div class="cartItemPic">
+          <img src="{{imageLocation}}{{item.getData().pictureURLs[0].url}}">
+        </div>
+
+        Unit Price :<br>
+        {{$storage.currency}} {{adjustedPrice(item) | number:$storage.decimal}}
+        <br>
+
+        <div class="removeFromCart">
+          <a ng-click="ngCart.removeItemById(item.getId())">(Remove)</a>
+        </div>
+
+
+        <div class="row">
+
+          <div class="col" ng-repeat="name in item.getName()">
+
+            - {{name}}
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="footer">
+      <button class="ion-minus-round button button-dark button-small" ng-class="{'disabled':item.getQuantity()==1}"
+              ng-click="item.setQuantity(-1, true)"></button>
+      <div class="quantity">
+        {{item.getQuantity()}}
+      </div>
+      <button class="ion-plus-round button button-dark button-small" ng-click="item.setQuantity(1, true)"
+              ng-disabled="item.getQuantity()==item.getData().onlineQty"></button>
+      <div class="subtotal">
+        {{item.getTotal()/$storage.exchangeRate | number:$storage.decimal}} {{$storage.currency}}
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+<style>
+  .ngCart.cart span[ng-click] {
+    cursor: pointer;
+  }
+
+  .empty-cart-div {
+    margin-top: 200px;
+    text-align: center;
+  }
+
+  .empty-cart-header {
+    color: #ffffff;
+
+  }
+
+  .empty-cart-icon {
+
+    font-size: 200px;
+    color: #FFFFFF;
+  }
+</style>

@@ -1,0 +1,92 @@
+<ion-view>
+
+  <ion-content>
+
+
+    <ion-list>
+      <ion-item class="settingItem" style="text-align: center">
+        Select a collection option
+      </ion-item>
+
+
+      <ion-item class="settingItem" ng-controller="DeliveryCtrl">
+
+
+        <div ng-hide="delivery" class="deliveryOption"><span>Mall Collection</span></div>
+        <div ng-show="delivery" class="deliveryOption"><span>Delivery</span></div>
+
+        <label class="toggle toggle-energized" style="float: right">
+          <input type="checkbox" ng-model="delivery">
+
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+
+        </label>
+
+
+        <div class="collectionGroup" ng-hide="delivery">
+          <md-input-container>
+            <label>Choose collection location</label>
+
+            <md-select ng-model="mallSelected">
+
+              <md-option ng-repeat="mall in malls" ng-value="mall" selected="mallSelected">
+                {{mall.name}} - {{mall.managementOffice.name}}
+              </md-option>
+
+            </md-select>
+
+          </md-input-container>
+
+          <button class="button button-energized button-block" ng-disabled="mallSelected == null"
+                  ng-click="deliveryDone()">Continue
+          </button>
+
+        </div>
+
+        <div class="deliveryGroup" ng-show="delivery">
+
+          <form name="deliveryForm">
+            <div style="text-align: center; color: #00317d; padding-bottom: 20px;">Please input your address information</div>
+
+            <md-input-container>
+              <label>Address Line 1</label>
+              <input ng-model="$storage.addressLine1" required>
+            </md-input-container>
+
+            <md-input-container>
+              <label>Address Line 2 (Optional)</label>
+              <input ng-model="$storage.addressLine2">
+            </md-input-container>
+
+            <md-input-container>
+              <label>Address Line 3 (Optional)</label>
+              <input ng-model="$storage.addressLine3">
+            </md-input-container>
+
+            <div layout="" layout-sm="column">
+              <md-input-container flex="">
+                <label>City</label>
+                <input ng-model="$storage.city" required>
+              </md-input-container>
+              <md-input-container flex="">
+                <label>Postal Code</label>
+                <input ng-model="$storage.postalCode" required>
+              </md-input-container>
+            </div>
+
+            <button class="button button-energized button-block" ng-disabled="deliveryForm.$invalid" ng-click="deliveryDone()">Continue</button>
+          </form>
+
+        </div>
+        * Delivery is free but may take up to 14 working days
+
+
+      </ion-item>
+
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>

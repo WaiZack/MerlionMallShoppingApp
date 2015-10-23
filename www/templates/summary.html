@@ -1,0 +1,83 @@
+<ion-view>
+
+  <ion-content>
+
+    <ion-item class="items">
+      <div class="row">
+        <div class="col" style="color: #00317d;">Name</div>
+        <div class="col" style="color: #00317d;">Quantity</div>
+        <div class="col" style="color: #00317d;">Subtotal ({{$storage.currency}})</div>
+      </div>
+
+      <div ng-repeat="item in ngCart.getCart().items track by $index" ng-controller="SummaryCtrl" class="row">
+
+        <div class="col"><b>{{item.getData().name}} </b> <br><span ng-repeat="option in item.getName()"><sub>{{option}}</sub> </span></div>
+        <div class="col">{{item.getQuantity()}}</div>
+        <div class="col col-20">{{item.getTotal() / $storage.exchangeRate| number :$storage.decimal}}</div>
+
+      </div>
+
+    </ion-item>
+
+    <div class="delivery">
+      <ion-item>
+        Collection Type : <strong>{{$storage.delivery? "Delivery": "Mall Collection"}}</strong>
+      </ion-item>
+      <ion-item class="collectionDetails">
+        <div ng-hide="$storage.delivery">
+          Collection at : {{$storage.mallSelected.name}} - {{$storage.mallSelected.managementOffice.name}}
+        </div>
+
+        <div ng-show="$storage.delivery">
+          <div style="display: inline-block; position: relative; transform: translateY(-100%);">
+            Delivery Address :
+          </div>
+          <div style="display: inline-block;">
+            <strong>
+            {{$storage.addressLine1 +" " +$storage.addressLine2 +" "+ $storage.addressLine3}}
+            <br>
+            {{$storage.city}}
+            <br>
+            {{$storage.postalCode}}
+            </strong>
+          </div>
+        </div>
+
+
+      </ion-item>
+
+    </div>
+
+    <div class="payment">
+      <ion-item>
+        <div style="display: inline-block; position: relative; transform: translateY(-100%);">
+          Payment Method :
+        </div>
+
+        <div style="display: inline-block;">
+
+        <strong> {{$storage.currentToken.sources.data[0].brand}} - **** {{$storage.currentToken.sources.data[0].last4}}</strong>
+        <br>
+        {{$storage.currentToken.sources.data[0].name}}
+        <br>
+        Expires {{$storage.currentToken.sources.data[0].expMonth}}/{{$storage.currentToken.sources.data[0].expYear}}
+
+        </div>
+      </ion-item>
+
+      <ion-item>
+        National Tax : <strong>{{ngCart.getTaxRate()|number:1}}%</strong> - <strong>{{ngCart.getTax()/$storage.exchangeRate|number:$storage.decimal}} {{$storage.currency}}</strong>
+        <br>
+        <br>
+        <div style="font-size: 25px;">Total : <strong>{{ngCart.totalCost()}} {{$storage.currency}}</strong></div>
+      </ion-item>
+
+      <ion-item>
+      <button class="button button-balanced button-block" ng-click="timeToTransact()">Confirm payment</button>
+        </ion-item>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>
