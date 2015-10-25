@@ -1,8 +1,7 @@
-3) View Tiers
 3) Rewards and Redemption
 - View rewards
 - Redeem
-//Only offer at silver tier and above
+//Only offer at gold tier and above
 4) Concierge Services (Type it out and select a shopping mall)
 5) Check Status of concierge requests
 <ion-view>
@@ -17,20 +16,22 @@
       <ion-item class="settingItem">
         <i class="icon mma-lion6"></i>
         My Membership Tier
-        <b><span style="float:right; color:#00317d">{{merlionTier}}</span></b>
+        <b><span style="float:right; color:#00317d">{{merlionTier.name}}</span></b>
       </ion-item>
       <ion-item class="settingItem" ng-click="displayProgress()">
         <i class="zmdi zmdi-eye"></i>
         View Merlion Tiers
         <i class="icon ion-chevron-right" style="float:right"></i>
       </ion-item>
-      <ion-item class="settingItem">
+      <ion-item class="settingItem" ng-click="redeemRewards()">
         <i class="icon ion-pricetags"></i>
         Rewards and Redemption
         <i class="icon ion-chevron-right" style="float:right"></i>
       </ion-item>
-      <ion-item class="settingItem" ng-if="angular.equals(merlionTier,'Silver') || angular.equals(merlionTier,'Gold')">
+      <ion-item class="settingItem" ng-show="merlionTier.id == 1 || merlionTier.id == 2">
+        <i class="zmdi zmdi-face"></i>
         Concierge Service
+        <i class="icon ion-chevron-right" style="float:right"></i>
       </ion-item>
     </ion-list>
   </ion-content>

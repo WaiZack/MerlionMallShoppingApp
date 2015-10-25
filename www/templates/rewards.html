@@ -1,0 +1,61 @@
+<ion-view>
+
+
+  <ion-list>
+    <ion-item style="text-align: center; padding-top: 59px;">
+      <div style="font-size:30px; color: #00317d;"><b>Current points : {{merlionStars}}</b></div>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-scroll style="height: 85%; ">
+
+    <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3"
+                  md-gutter="10px">
+
+      <md-grid-tile ng-repeat="reward in merlionRewards">
+        <flippy
+          class="fancy"
+          ng-click="flip()"
+          flip-duration="500"
+          timing-function="ease-in-out"
+          style=" width: 100%;height: 100%; margin: 0px;">
+
+          <flippy-front>
+
+            <img src="{{imageLocation}}{{reward.picture}}" class="rewardImage">
+            <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.68); height: 36px;">
+              <h3 style="color: #FFF;">{{reward.rewardName}}</h3>
+            </md-grid-tile-footer>
+
+          </flippy-front>
+
+          <flippy-back>
+            <div style="background-color: #00317d; height: 100%; color: #FFFFFF; padding-top: 10px">
+              <div style="font-size: 20px;" class="row">
+                <div class="col">
+                  {{reward.rewardDescription}}
+                </div>
+              </div>
+
+              <div style="font-size: 15px; position: absolute; bottom:0;" class="row">
+                <div class="col">
+                  <button class="button button-energized button-block button-full" style="color:#000;" ng-click="redeemReward(reward)" ng-disabled="reward.pointCost > merlionStars">
+                    Redeem for :   <i class="icon mma-lion6"></i><span style="font-size: 20px">{{reward.pointCost}}</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </flippy-back>
+
+        </flippy>
+      </md-grid-tile>
+
+
+    </md-grid-list>
+
+  </ion-scroll>
+
+
+</ion-view>
