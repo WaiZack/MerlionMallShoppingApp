@@ -1,0 +1,40 @@
+<ion-view>
+
+  <ion-content>
+
+    <ion-list>
+
+      <ion-item class="settingItem">
+
+
+        <form ng-submit="updateEmail()" name="pwForm">
+          <div>
+
+
+
+            <md-input-container>
+              <label>Email<span ng-show="pwForm.email.$error.rcMailgunEmailValid"> (Invalid Email Address!)</span>
+                <span ng-show="pwForm.email.$error.rcMailgunInProgress"> (Validating Email...)</span></label>
+              <input ng-model="new.email" name="email" required rc-mailgun-valid type="email">
+              <md-progress-linear ng-show="pwForm.email.$error.rcMailgunInProgress" md-mode="indeterminate"
+                                  style="float:right"></md-progress-linear>
+
+            </md-input-container>
+
+
+          </div>
+          <div>
+            <md-input-container>
+              <label>Password</label>
+              <input ng-model="new.password" required type="password">
+            </md-input-container>
+          </div>
+
+          <button class="button button-block button-energized" ng-click="submit()" ng-disabled="pwForm.$invalid">Save Changes</button>
+        </form>
+
+
+      </ion-item>
+
+  </ion-content>
+</ion-view>

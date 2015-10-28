@@ -1,0 +1,60 @@
+<ion-view cache-view="false">
+
+  <ion-content>
+
+
+    <ion-item class="item-text-wrap">
+      <div class="row">
+        <div class="col">
+          Date
+
+        </div>
+        <div class="col">
+          Points Earned
+
+        </div>
+        <div class="col">
+          Total Price
+
+        </div>
+        <div class="col">
+          Tracking Number
+
+        </div>
+        <div class="col">
+          Items Bought
+        </div>
+      </div>
+      </ion-item>
+
+      <ion-item ng-repeat="transaction in transactions" class="item-text-wrap">
+        <div class="row">
+          <div class="col">
+            <!--date-->
+            {{transaction.dateOfTransaction | date: longDate}}
+
+          </div>
+          <div class="col">
+            <!--points-->
+            {{transaction.points}}
+
+          </div>
+          <div class="col">
+            <!--totalPrice-->
+            {{transaction.totalPrice/$storage.exchangeRate|number:$storage.decimal}} {{$storage.currency}}
+
+          </div>
+          <div class="col">
+            <!--tracking-->
+            {{transaction.trackingNumber}}
+          </div>
+          <div class="col">
+            <button class="button button-outline button-energized" ng-click="showItems(transaction)">View</button>
+          </div>
+        </div>
+
+      </ion-item>
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view>
+
+  <ion-content>
+
+    <ion-list>
+
+      <ion-item class="settingItem" >
+
+
+        <form ng-submit="sendFeedback()" name="fbForm">
+          <md-input-container>
+            <label>Select a Mall to Provide Feedback</label>
+
+            <md-select ng-model="feedbackForm.mallSelected">
+
+              <md-option ng-repeat="mall in malls" ng-value="mall">
+                {{mall.name}} - {{mall.managementOffice.country == null? mall.managementOffice.region.name : mall.managementOffice.country.name}}
+              </md-option>
+
+            </md-select>
+
+          </md-input-container>
+
+          <md-input-container flex="">
+            <label>Feedback</label>
+            <textarea ng-model="feedbackForm.content" columns="1" md-maxlength="300" required></textarea>
+          </md-input-container>
+
+
+          <button class="button button-block button-energized" ng-click="submit()" ng-disabled="fbForm.$invalid || feedbackForm.mallSelected == null">Submit</button>
+
+          </form>
+
+      </ion-item>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-view>
+
+  <ion-content>
+
+    <ion-list>
+
+      <ion-item class="settingItem" >
+
+
+        <form ng-submit="updateName()">
+        <div>
+
+
+          <md-input-container>
+            <label>First Name</label>
+            <input ng-model="new.fName" required>
+          </md-input-container>
+        </div>
+        <div>
+          <md-input-container>
+            <label>Last Name</label>
+            <input ng-model="new.lName" required>
+          </md-input-container>
+        </div>
+
+        <button class="button button-block button-energized" ng-click="submit()">Save Changes</button>
+          </form>
+
+
+      </ion-item>
+
+  </ion-content>
+</ion-view>

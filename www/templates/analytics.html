@@ -1,0 +1,79 @@
+<ion-view cache-view="false">
+
+  <ion-content>
+
+    <ion-list>
+
+      <ion-item>
+        <md-subheader class="md-primary">Overall Spending Percentage</md-subheader>
+        <div donut-chart="" donut-data="percentageData" donut-formatter="percentageFormatter"></div>
+      </ion-item>
+
+      <ion-item>
+        <md-subheader class="md-primary">Interesting Numbers For You</md-subheader>
+        <md-grid-list md-cols-sm="2" md-cols-md="2" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px"
+                      md-gutter-gt-sm="4px">
+
+          <md-grid-tile style="background-color: #448aff" >
+            <div style="text-align:center;">
+              <h4 class="item-text-wrap">Your Favourite Category</h4>
+
+
+              <div class="item-text-wrap">
+              <b>{{$storage.currentHighest.key}}</b>
+                <br>
+                {{$storage.currentHighest.value}} Bought
+              </div>
+            </div>
+
+
+          </md-grid-tile>
+          <md-grid-tile style="background-color: #FFE580">
+            <div style="text-align:center;">
+              <h4 class="item-text-wrap">Your Favourite Shop</h4>
+
+
+              <div class="item-text-wrap">
+                <b>{{$storage.faveTenant[0][1].companyName}}</b>
+                <br>
+                {{$storage.faveTenant[0][0]}} Bought
+              </div>
+            </div>
+
+
+          </md-grid-tile>
+
+
+        </md-grid-list>
+      </ion-item>
+
+      <ion-item class="item-text-wrap">
+        <md-subheader class="md-primary">Recommendations</md-subheader>
+        <md-divider></md-divider>
+        <md-subheader class="md-primary">More from your favourite category</md-subheader>
+        <md-list>
+          <md-list-item class="md-3-line md-long-text">
+            <img src="{{$storage.imageLocation}}{{$storage.catReco.pictureURLs[0].url}}" class="md-avatar">
+            <div class="md-list-item-text">
+              <h3>{{$storage.catReco.name}}</h3>
+              {{$storage.catReco.onlinePrice/$storage.exchangeRate|number:$storage.decimal}} {{$storage.currency}}
+            </div>
+            <md-button style="float:right" class="md-fab md-primary" ng-click="searchItems($storage.catReco.name)"> Go </md-button>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-subheader class="md-primary">More from your favourite shop</md-subheader>
+          <md-list-item class="md-3-line md-long-text">
+            <img src="{{$storage.imageLocation}}{{$storage.tenantReco.pictureURLs[0].url}}" class="md-avatar">
+            <div class="md-list-item-text">
+              <h3>{{$storage.tenantReco.name}}</h3>
+              {{$storage.tenantReco.onlinePrice/$storage.exchangeRate|number:$storage.decimal}} {{$storage.currency}}
+            </div>
+            <md-button style="float:right" class="md-fab md-primary" ng-click="searchItems($storage.tenantReco.name)"> Go </md-button>
+          </md-list-item>
+        </md-list>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>

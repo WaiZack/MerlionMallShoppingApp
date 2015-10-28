@@ -1,0 +1,81 @@
+<ion-view>
+
+  <ion-content>
+
+    <ion-list>
+
+      <ion-item class="settingItem" >
+
+        <div class="row">
+          <div class="col">
+            <div style="padding-bottom:10px">
+              Name :
+            </div>
+            <div>
+              <b>{{$storage.currentUser.name}}</b>
+            </div>
+          </div>
+          <div class="col-20">
+            <button class="button button-energized button-block" ng-click="changeName()">Edit</button>
+          </div>
+        </div>
+
+      </ion-item>
+
+      <ion-item class="settingItem" >
+
+        <div class="row">
+          <div class="col">
+            <div style="padding-bottom:10px">
+              Email :
+            </div>
+            <div>
+              <b>{{$storage.currentUser.userName}}</b>
+            </div>
+          </div>
+          <div class="col-20">
+            <button class="button button-energized button-block" ng-click="changeEmail()">Edit</button>
+          </div>
+        </div>
+
+      </ion-item>
+
+      <ion-item class="settingItem" >
+
+        <div class="row">
+          <div class="col">
+            <div style="padding-bottom:10px">
+              Password :
+            </div>
+            <div>
+              <b>**************</b>
+            </div>
+          </div>
+          <div class="col-20">
+            <button class="button button-energized button-block" ng-click="changePassword()">Edit</button>
+          </div>
+        </div>
+
+      </ion-item>
+
+      <ion-item class="settingItem" >
+
+        <div class="row">
+          <div class="col">
+            <div style="padding-bottom:10px">
+              Deactivate Account
+            </div>
+          </div>
+          <div class="col-20">
+            <button class="button button-assertive button-block" ng-click="deleteAccount()"><i class="icon ion-android-warning" style="font-size:30px"></i></button>
+          </div>
+        </div>
+
+      </ion-item>
+
+
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>

@@ -32,7 +32,7 @@
             <md-select ng-model="mallSelected">
 
               <md-option ng-repeat="mall in malls" ng-value="mall" selected="mallSelected">
-                {{mall.name}} - {{mall.managementOffice.name}}
+                {{mall.name}} - {{mall.managementOffice.country == null? mall.managementOffice.region.name : mall.managementOffice.country.name}}
               </md-option>
 
             </md-select>

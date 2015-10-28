@@ -1,16 +1,19 @@
-<ion-view title="<img class='title-image' src='img/logo.png' >">
+<ion-view title="<img class='title-image' src='img/logo.png' > ">
   <ion-content>
+    <md-subheader class="md-primary">Current Category - {{$storage.category}}
+    <br><span ng-show="$storage.aItems.length == 0">Sorry! No Results Found</span>
 
+    </md-subheader>
 
-    <div ng-repeat="aItem in aItems">
+    <div ng-repeat="aItem in $storage.aItems">
       <ul rn-carousel class="image">
         <li ng-repeat="image in aItem.pictureURLs">
 
-          <img src="{{imageLocation}}{{image.url}}">
+          <img src="{{$storage.imageLocation}}{{image.url}}">
 
         </li>
       </ul>
-      <div class="list card energized-100-bg">
+      <div class="list card stable-bg">
 
         <div class="item item-avatar">
           <img src="{{aItem.tenant.logo}}">
@@ -24,7 +27,7 @@
         <div class="item item-image">
           <ion-slide-box show-pager="{{shouldShow(false)}}">
             <ion-slide ng-repeat="image in aItem.pictureURLs">
-              <img src="{{imageLocation}}{{image.url}}">
+              <img src="{{$storage.imageLocation}}{{image.url}}" style="height:100%">
 
               <div style="color: #00317d">
                 Image: {{image.title}}
@@ -37,12 +40,12 @@
         </div>
 
 
-        <div  ng-repeat="category in aItem.varianceFields">
+        <div ng-repeat="category in aItem.varianceFields">
           <md-input-container>
             <label>{{category.categoryName}}</label>
             <md-select ng-model="options[$index]">
               <md-option ng-repeat="varianceValue in category.varianceValues" value="{{varianceValue.value}}"
-                         selected="$index==0">
+                         >
                 {{varianceValue.value}}
               </md-option>
             </md-select>
@@ -56,26 +59,22 @@
         <div style="float: right; padding-right: 10px">
           <!--<button class="button button-assertive" ng-click="addToCart">Add to cart</button>-->
 
-          <ngcart-addtocart id="{{aItem.id}}" name="biggerArray[$index]" price="{{aItem.onlinePrice}}" data="aItem" ng-disabled="inart()">
+          <ngcart-addtocart id="{{aItem.id}}" name="options" price="{{aItem.onlinePrice}}" data="aItem" ng-disabled="inart()">
             Add To Cart
           </ngcart-addtocart>
+          <!--<button ng-click="hi()"></button>-->
 
         </div>
       </div>
     </div>
 
-    STILL TO BE ADDED :
-    1)CHECK FOR A&P
-    <!--2)REGISTERING IN DATABASE-->
-    <!--3)CHECK FOR QUANTITY-->
-    <!--3)Credit Card-->
-    4)Settings Menu
-    <!--5)Item Details-->
-    <!--6)Item then list by shop (Filtered View) (For individual items, that can be the item details page-->
-    7)Add option to remove payment option!!!
-    8)Ability to add different variants of the same item
+    <!--STILL TO BE ADDED :-->
+    <!--1)CHECK FOR A&P-->
+    <!--4)Settings Menu-->
+    <!--7)Add option to remove payment option!!!-->
 
 
-    SERVICE SIDE STILL NOT DONE!
+    <!--SERVICE SIDE STILL NOT DONE!-->
+
   </ion-content>
 </ion-view>

@@ -27,11 +27,15 @@
 
     <ion-pane style="background-color: #2C5493">
 
+      <form>
       <label class="item item-input" style="border: none">
         <i class="icon ion-android-search placeholder-icon"></i>
-        <input type="search" placeholder="Search" ng-model="searchText" class="searchBox" style="color: #FFFFFF;">
+        <input type="search" placeholder="Search" ng-model="searchForm.searchText" class="searchBox" style="color: #FFFFFF;">
       </label>
-      <ion-content class="has-header" has-bouncing="false">
+      <button class="button button-full button-small button-energized" ng-click="searchItems()" menu-toggle="left">Search</button>
+      </form>
+
+      <ion-content class="custom-has-header" has-bouncing="false">
         <ion-list>
           <ion-item>
 
