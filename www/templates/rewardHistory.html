@@ -1,0 +1,59 @@
+<ion-view cache-view="false">
+
+  <ion-content>
+
+
+    <ion-item class="item-text-wrap" style="word-wrap: normal">
+      <div class="row">
+        <div class="col">
+          Date
+
+        </div>
+        <div class="col">
+          Image
+
+        </div>
+        <div class="col">
+         Name
+
+        </div>
+        <div class="col">
+          Point Cost
+
+        </div>
+
+      </div>
+    </ion-item>
+
+    <ion-item ng-repeat="hist in history" class="item-text-wrap">
+      <div class="row">
+        <div class="col">
+          <!--date-->
+          {{hist.dateRedeemed | date: longDate}}
+
+        </div>
+        <div class="col">
+          <!--totalPrice-->
+          <img src="{{$storage.imageLocation}}{{hist.picture}}" style="width: 50px; height: 50px;">
+
+        </div>
+
+        <div class="col">
+          <!--tracking-->
+          {{hist.rewardName}}
+        </div>
+        <div class="col">
+          <!--points-->
+          {{hist.pointCost}}
+
+        </div>
+
+
+
+      </div>
+
+    </ion-item>
+
+
+  </ion-content>
+</ion-view>

@@ -6,7 +6,7 @@
       </div>
     </div>
     <div>
-      <form name="loginForm" novalidate="" ng-submit="login()">
+      <form name="loginForm" novalidate="">
         <div class="list" id="loginForm" style="padding-right:30px">
           <ion-md-input placeholder="Email" ng-required="true" highlight-color="balanced" type="text"
                         ng-model="logForm.username"></ion-md-input>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="padding">
-          <button type="submit" ng-click="submit()" class="button button-full button-assertive"><i
+          <button type="submit" ng-click="login()" class="button button-full button-assertive"><i
             class="icon ion-android-unlock"></i> Login
           </button>
           <button ui-sref="register" class="button button-full  button-positive ink"><i class="icon ion-edit"></i>

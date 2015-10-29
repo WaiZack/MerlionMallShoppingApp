@@ -13,6 +13,7 @@
 
     </ion-item>
 
+
     <form stripe-form="stripeIt"
             name="cardForm"
             id="cardForm"
@@ -22,7 +23,6 @@
             data-placeholders="cardPlaceholders"
             data-options="cardOptions"
             data-messages="cardMessages"
-            style="padding-left: 30px;"
         >
 
 
@@ -54,14 +54,16 @@
                  payments-format="cvc" required payments-type-model="type"/>
         </md-input-container>
 
+      <div id="card-container" style="float:left;"></div>
+
+      <button class="button button-energized button-block" type="submit" ng-disabled="cardForm.$invalid">Continue</button>
+
+  </form>
 
 
-    <div id="card-container" style="float:left;"></div>
 
 
-    </form>
 
-    <button class="button button-energized button-block" form="cardForm" ng-disabled="cardForm.$invalid" type="submit">Continue</button>
 
   </ion-content>
 </ion-view>

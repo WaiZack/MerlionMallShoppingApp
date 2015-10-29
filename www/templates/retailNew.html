@@ -18,7 +18,7 @@
         <div class="item item-avatar">
           <img src="{{aItem.tenant.logo}}">
 
-          <div class="itemHeader">{{aItem.name}}</div>
+          <div class="itemHeader item-text-wrap">{{aItem.name}}</div>
 
           <p>{{aItem.tenant.companyName}}</p>
         </div>
@@ -35,7 +35,7 @@
             </ion-slide>
           </ion-slide-box>
         </div>
-        <div class="item item-text-wrap">
+        <div class="item item-text-wrap" style="word-wrap: normal">
           {{aItem.description}}
         </div>
 
@@ -59,7 +59,7 @@
         <div style="float: right; padding-right: 10px">
           <!--<button class="button button-assertive" ng-click="addToCart">Add to cart</button>-->
 
-          <ngcart-addtocart id="{{aItem.id}}" name="options" price="{{aItem.onlinePrice}}" data="aItem" ng-disabled="inart()">
+          <ngcart-addtocart id="{{aItem.id}}" name="options" price="{{aItem.onlinePrice}}" data="aItem">
             Add To Cart
           </ngcart-addtocart>
           <!--<button ng-click="hi()"></button>-->

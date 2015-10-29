@@ -7,7 +7,7 @@
       <ion-item class="settingItem" >
 
 
-        <form ng-submit="sendFeedback()" name="fbForm">
+        <form name="fbForm">
           <md-input-container>
             <label>Select a Mall to Provide Feedback</label>
 
@@ -27,7 +27,7 @@
           </md-input-container>
 
 
-          <button class="button button-block button-energized" ng-click="submit()" ng-disabled="fbForm.$invalid || feedbackForm.mallSelected == null">Submit</button>
+          <button class="button button-block button-energized" ng-click="sendFeedback()" ng-disabled="fbForm.$invalid || feedbackForm.mallSelected == null">Submit</button>
 
           </form>
 
