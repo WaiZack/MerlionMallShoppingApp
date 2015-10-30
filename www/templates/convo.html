@@ -1,0 +1,67 @@
+<ion-view>
+
+  <ion-view id="userMessagesView"
+            cache-view="false">
+
+    <ion-content has-bouncing="true" class="has-header has-footer"
+                 delegate-handle="userMessageScroll">
+
+      <div ng-repeat="message in messages" class="message-wrapper"
+           >
+
+        <div ng-if="username !== message.username">
+
+          <img class="profile-pic left"
+               src="img/me.png" />
+
+          <div class="chat-bubble left">
+
+            <div class="message" ng-bind-html="message.content | nl2br" autolinker>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div ng-if="username === message.username">
+
+          <img class="profile-pic right"
+               ng-src="img/me.png"  />
+
+          <div class="chat-bubble right">
+
+            <div class="message" ng-bind-html="message.content | nl2br" autolinker>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="cf"></div>
+
+      </div>
+    </ion-content>
+
+    <form name="sendMessageForm">
+      <ion-footer-bar class="bar-stable item-input-inset message-footer bar-footer" keyboard-attach>
+        <label class="item-input-wrapper">
+          <textarea ng-model="message.content" value="" placeholder="Send a message..." required minlength="1" maxlength="1500" msd-elastic style="width:100%"></textarea>
+        </label>
+        <div>
+
+          <md-button class="md-raised md-primary" style="font-size: 30px" ng-click="sendMessage()" ng-disabled="!message.content || message.content === ''">
+            <i class="icon ion-android-send"></i>
+          </md-button>
+          <!--<button class="button button-clear" ng-click="sendMessage()"-->
+                  <!--ng-disabled="!message.content || message.content === ''">-->
+            <!--<i class="icon ion-ios-checkmark"></i>-->
+          <!--</button>-->
+        </div>
+
+      </ion-footer-bar>
+    </form>
+
+  </ion-view>
+
+</ion-view>

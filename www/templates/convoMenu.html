@@ -1,0 +1,18 @@
+
+//Only offer at gold tier and above
+4) Concierge Services (Type it out and select a shopping mall)
+5) Check Status of concierge requests
+<ion-view>
+
+  <ion-content>
+    <ion-list>
+      <ion-item class="settingItem item-text-wrap" ng-repeat="convo in conversations" ng-click="viewConvo(convo)">
+        <i class="zmdi zmdi-comment-text"></i>
+        Feedback for {{convo.mall.name}} <br><sub>{{convo.date| date: longDate}}</sub>
+        <i class="icon ion-chevron-right" style="float:right"></i>
+      </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>
+
+
