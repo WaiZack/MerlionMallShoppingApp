@@ -1,0 +1,62 @@
+<ion-view>
+  <ion-content>
+
+
+    <md-subheader class="md-primary">Current Category - {{$storage.serviceCategory}}
+      <br><span ng-show="$storage.aServices.length == 0">Sorry! No Results Found</span>
+
+    </md-subheader>
+    <md-list>
+      <md-list-item class="md-3-line md-long-text" ng-repeat="aService in $storage.aServices" style="font-size: 20px;" ng-click="serviceDetails(aService) ">
+        <!--<md-divider></md-divider>-->
+        <img src="{{$storage.imageLocation}}{{aService.pictureURL[0].url}}" class="md-avatar">
+
+        <div class="md-list-item-text">
+
+          <h3>{{aService.name}}</h3>
+          <i class="icon ion-chevron-right" style="float:right"></i>
+          <p>by {{aService.tenant.companyName}}</p>
+          <md-divider></md-divider>
+
+
+        </div>
+
+      </md-list-item>
+
+    </md-list>
+
+
+
+
+
+    <!--<div class="row">-->
+      <!--<div class="col-20">-->
+        <!--<h4>Pick a date :</h4>-->
+      <!--</div>-->
+      <!--<div class="col">-->
+        <!--<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>-->
+        <!--&lt;!&ndash;<time-date-picker ng-model="dateValue" theme="bootstrap"></time-date-picker>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ionic-timepicker input-obj="timePickerObject">&ndash;&gt;-->
+        <!--&lt;!&ndash;<md-input-container flex="">&ndash;&gt;-->
+        <!--&lt;!&ndash;<label>Last Name</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input ng-model="time">&ndash;&gt;-->
+        <!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ionic-timepicker>&ndash;&gt;-->
+      <!--</div>-->
+<!--</div>-->
+    <!--<div class="row">-->
+
+      <!--<div class="col-20" style="margin-right:20px">-->
+        <!--<h4>Pick a time:</h4>-->
+      <!--</div>-->
+      <!--<div class="col">-->
+        <!--<clockpicker ng-model="time">-->
+        <!--</clockpicker>-->
+      <!--</div>-->
+
+
+    <!--</div>-->
+
+
+  </ion-content>
+</ion-view>

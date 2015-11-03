@@ -1,0 +1,69 @@
+<ion-view>
+  <ion-content>
+
+    <ion-item class="item-text-wrap" style="word-wrap: normal">
+      <div class="row">
+        <div class="col">
+          Date
+
+        </div>
+        <div class="col">
+          Shop
+
+        </div>
+        <div class="col">
+          Service
+
+        </div>
+        <div class="col">
+          Number of Guests
+
+        </div>
+        <div class="col">
+          Status
+
+        </div>
+
+      </div>
+    </ion-item>
+
+    <ion-item ng-repeat="booking in $storage.aBookings | orderBy:'bookingTime'" class="item-text-wrap">
+
+      <div class="row">
+        <div class="col">
+          <!--date-->
+
+          {{booking.bookingTime | date: 'short'}}
+
+        </div>
+        <div class="col">
+          <!--totalPrice-->
+          {{booking.shop.shopName}} - {{booking.shop.spaces[0].floor.mall.name}}
+
+        </div>
+
+        <div class="col">
+          <!--tracking-->
+          {{booking.service.name}}
+
+        </div>
+        <div class="col">
+          <!--points-->
+          {{booking.numGuests}}
+
+
+        </div>
+        <div class="col">
+          <!--points-->
+          <b>{{booking.status}}</b>
+
+
+        </div>
+
+
+
+      </div>
+
+    </ion-item>
+  </ion-content>
+</ion-view>

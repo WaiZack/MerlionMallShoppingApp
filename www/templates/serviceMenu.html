@@ -1,0 +1,63 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content drag-content="false">
+    <ion-nav-bar class="bar-energized">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color: black">
+        </button>
+      </ion-nav-buttons>
+
+
+      <ion-nav-buttons side="right" >
+        <button class="button button-icon button-clear ion-network" style="color: black" ng-click="landing()"></button>
+        <button class="button button-icon button-clear ion-home" style="color: black" ng-click="home()"></button>
+        <button class="button button-icon button-clear ion-gear-a" style="color: black" ng-click="settings()"></button>
+        </button>
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+
+  <ion-side-menu side="left">
+
+
+    <ion-pane style="background-color: #FFD32C">
+
+      <form>
+        <label class="item item-input" style="border: none">
+          <i class="icon ion-android-search placeholder-icon" style="color: #000;;"></i>
+          <input type="search" placeholder="Search" ng-model="searchForm.searchText" class="searchBox" style="color: #000;">
+        </label>
+        <button class="button button-full button-small button-positive-900" ng-click="searchServices()" menu-toggle="left">Search</button>
+      </form>
+
+      <ion-content class="custom-has-header" has-bouncing="false">
+        <ion-list>
+          <ion-item>
+
+            <button id="all" class="button button-fab button-dark icon ion-android-list" ng-click="loadAllServices()" menu-toggle="left"></button>
+            <label for="all" style="color: #000;">All Services</label>
+
+          </ion-item>
+          <div collection-repeat="category in categories">
+            <ion-item class="button button-clear" ng-click="loadServiceCategory(category)" menu-toggle="left">
+              <div style="padding-left:20px; color:#000">
+                {{category}}
+              </div>
+
+            </ion-item>
+
+          </div>
+        </ion-list>
+      </ion-content>
+    </ion-pane>
+  </ion-side-menu>
+
+
+
+
+</ion-side-menus>

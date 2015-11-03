@@ -1,0 +1,67 @@
+<ion-view>
+  <ion-content>
+    <ul rn-carousel class="image">
+      <li ng-repeat="image in $storage.itemSelected.pictureURLs">
+
+        <img src="{{$storage.imageLocation}}{{image.url}}">
+
+      </li>
+    </ul>
+    <div class="list card stable-bg">
+
+      <div class="item item-avatar">
+        <img src="{{$storage.itemSelected.tenant.logo}}">
+
+        <div class="itemHeader item-text-wrap">{{$storage.itemSelected.name}}</div>
+
+        <p>{{$storage.itemSelected.tenant.companyName}}</p>
+      </div>
+
+
+      <div class="item item-image">
+        <ion-slide-box show-pager="{{shouldShow(false)}}">
+          <ion-slide ng-repeat="image in $storage.itemSelected.pictureURLs">
+            <img src="{{$storage.imageLocation}}{{image.url}}" style="height:100%">
+
+            <div style="color: #00317d">
+              Image: {{image.title}}
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+      <div class="item item-text-wrap" style="word-wrap: normal">
+        {{$storage.itemSelected.description}}
+      </div>
+
+
+      <div ng-repeat="category in $storage.itemSelected.varianceFields">
+        <md-input-container>
+          <label>{{category.categoryName}}</label>
+          <md-select ng-model="options[$index]">
+            <md-option ng-repeat="varianceValue in category.varianceValues" value="{{varianceValue.value}}"
+              >
+              {{varianceValue.value}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+
+      <div class="item item-icon-left positive" style="display: inline-block; width: 50%">
+        <i class="icon ion-information-circled"></i>
+        ${{adjustedPrice($storage.itemSelected.onlinePrice )| number:$storage.decimal}} {{$storage.currency}}
+      </div>
+      <div style="float: right; padding-right: 10px">
+        <!--<button class="button button-assertive" ng-click="addToCart">Add to cart</button>-->
+
+        <ngcart-addtocart id="{{$storage.itemSelected.id}}" name="options" price="{{$storage.itemSelected.onlinePrice}}" data="$storage.itemSelected">
+          Add To Cart
+        </ngcart-addtocart>
+        <!--<button ng-click="hi()"></button>-->
+
+      </div>
+    </div>
+
+
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,36 @@
+<ion-view>
+  <ion-content>
+    <md-subheader class="md-primary">Current Category - {{$storage.category}}
+      <br><span ng-show="$storage.aItems.length == 0">Sorry! No Results Found</span>
+
+    </md-subheader>
+    <md-list>
+      <md-list-item class="md-3-line md-long-text" ng-repeat="aItem in $storage.aItems" style="font-size: 20px;" ng-click="itemDetails(aItem) ">
+        <!--<md-divider></md-divider>-->
+        <img src="{{$storage.imageLocation}}{{aItem.pictureURLs[0].url}}" class="md-avatar">
+
+        <div class="md-list-item-text">
+
+          <h3>{{aItem.name}}</h3>
+          <i class="icon ion-chevron-right" style="float:right"></i>
+          <p><sup>by {{aItem.tenant.companyName}}</sup></p>
+          <p style="color: #00317d;">{{aItem.onlinePrice/$storage.exchangeRate|number:$storage.decimal}} {{$storage.currency}}</p>
+          <md-divider></md-divider>
+
+
+        </div>
+
+        <!--<md-button class="md-raised md-primary">More..</md-button>-->
+        <!--<i class="zmdi zmdi-info"></i>-->
+        <!--<md-button class="md-fab md-primary" style="font-size:30px;">-->
+          <!--<i class="zmdi zmdi-info"></i>-->
+
+        <!--</md-button>-->
+        <!--<md-button style="float:right" class="md-fab md-primary" ng-click="searchItems($storage.catReco.name)"> Go </md-button>-->
+
+      </md-list-item>
+
+         </md-list>
+  </ion-content>
+
+</ion-view>

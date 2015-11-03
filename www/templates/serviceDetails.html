@@ -1,0 +1,99 @@
+<ion-view>
+  <ion-content>
+    <div class="list card stable-bg">
+
+      <div class="item item-avatar">
+        <img src="{{$storage.serviceSelected.tenant.logo}}">
+
+        <div class="itemHeader item-text-wrap">{{$storage.serviceSelected.name}}</div>
+
+        <p>{{$storage.serviceSelected.tenant.companyName}}</p>
+      </div>
+
+
+      <div class="item item-image">
+        <ion-slide-box show-pager="{{shouldShow(false)}}">
+          <ion-slide ng-repeat="image in $storage.serviceSelected.pictureURL">
+            <img src="{{$storage.imageLocation}}{{image.url}}" style="height:100%">
+
+            <div style="color: #00317d">
+              Image: {{image.title}}
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+      <div class="item item-text-wrap" style="word-wrap: normal">
+        {{$storage.serviceSelected.description}}
+      </div>
+
+
+      <div class="row">
+        <div class="col-20" style="margin-right:20px">
+          <h4>Choose Shop :</h4>
+        </div>
+        <div class="col">
+
+
+          <md-input-container style="color: black;">
+            <label>Choose Desired Shop</label>
+            <md-select ng-model="shoppy" ng-change="update(shoppy)">
+              <md-option ng-repeat="shop in shops" ng-value="shop" selected="shops[0]">
+                {{shop.shopName}} - {{shop.spaces[0].floor.mall.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+
+        </div>
+
+
+      </div>
+      <div class="row">
+      <h4><span style="color: black">Opening Hours : {{$storage.shoppy.serviceResource.openingTime-1.8e+6|date:'shortTime'}} to {{$storage.shoppy.serviceResource.closingTime-1.8e+6|date:'shortTime'}}</span>
+      </h4>
+      </div>
+
+      <form>
+        <div class="row">
+          <div class="col-20" style="margin-right:20px">
+            <h4>Pick a date :</h4>
+          </div>
+          <div class="col">
+            <md-datepicker ng-model="booking.bookingDate" md-placeholder="Pick a date" md-min-date="minDate"
+                           md-max-date="maxDate"></md-datepicker>
+          </div>
+
+        </div>
+        <div class="row">
+
+          <div class="col-20" style="margin-right:20px">
+            <h4>Pick a time:</h4>
+          </div>
+          <div class="col">
+            <clockpicker ng-model="booking.bookingTime">
+            </clockpicker>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-20" style="margin-right:20px">
+            <h4>Guests:</h4>
+          </div>
+          <div class="col">
+            <md-input-container>
+              <label>Number of Guests</label>
+              <input type="number" style="font-size: 20px" ng-model="booking.numberOfGuests" min="1">
+            </md-input-container>
+          </div>
+        </div>
+        <span style="color: black">*Note that we would not be able to provide automated confirmation for advanced bookings beyond <b>{{today}}</b></span>
+        <button class="button button-positive button-block" ng-click="submitBooking()"><i
+          class="icon ion-android-alarm-clock"></i> Submit Booking
+        </button>
+      </form>
+    </div>
+
+
+  </ion-content>
+
+</ion-view>

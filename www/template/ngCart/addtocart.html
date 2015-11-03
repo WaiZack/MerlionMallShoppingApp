@@ -7,6 +7,9 @@
         <button class="button button-energized"
            ng-click="ngCart.addItem(id, name, price,q, data)"
            ng-transclude ng-hide="inCart()" style="width:100px"></button>
-      <button class="button button-assertive" ng-show="inCart()" ng-disabled="true" style="width:100px">In Cart</button>
+      <button class="button button-assertive" ng-show="inCart()" style="width:100px" ng-click="ngCart.removeItemById(id)"><div class="item-text-wrap">Remove</div></button>
+      <!--<div class="removeFromCart">-->
+        <!--<a ng-click="ngCart.removeItemById(item.getId())">(Remove)</a>-->
+      <!--</div>-->
     </div>
 </div>

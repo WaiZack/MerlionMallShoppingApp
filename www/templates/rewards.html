@@ -9,11 +9,12 @@
 
 
   <ion-scroll style="height: 85%; ">
+    <md-subheader class="md-primary" style="font-size: 20px;">{{$storage.allTiers[0].name}} Tier Rewards</md-subheader>
 
-    <md-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3"
+    <md-grid-list md-cols-sm="2" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3"
                   md-gutter="10px">
 
-      <md-grid-tile ng-repeat="reward in merlionRewards">
+      <md-grid-tile ng-repeat="reward in $storage.bronzeRewards">
         <flippy
           class="fancy"
           ng-click="flip()"
@@ -23,7 +24,7 @@
 
           <flippy-front>
 
-            <img src="{{imageLocation}}{{reward.picture}}" class="rewardImage">
+            <img src="{{$storage.imageLocation}}{{reward.picture}}" class="rewardImage">
             <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.68); height: 36px;">
               <h3 style="color: #FFF;">{{reward.rewardName}}</h3>
             </md-grid-tile-footer>
@@ -40,8 +41,102 @@
 
               <div style="font-size: 15px; position: absolute; bottom:0;" class="row">
                 <div class="col">
-                  <button class="button button-energized button-block button-full" style="color:#000;" ng-click="redeemReward(reward)" ng-disabled="reward.pointCost > merlionStars">
-                    Redeem for :   <i class="icon mma-lion6"></i><span style="font-size: 20px">{{reward.pointCost}}</span>
+                  <button class="button button-energized button-block button-full" style="color:#000; font-size:10px" ng-click="redeemReward(reward)" ng-disabled="reward.pointCost > merlionStars">
+                    Redeem for:   <i class="icon mma-lion6"></i><span style="font-size: 18px">{{reward.pointCost}}</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </flippy-back>
+
+        </flippy>
+      </md-grid-tile>
+
+
+    </md-grid-list>
+
+    <md-subheader class="md-primary" style="font-size: 20px;">{{$storage.allTiers[1].name}} Tier Rewards</md-subheader>
+
+    <md-grid-list md-cols-sm="2" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3"
+                  md-gutter="10px">
+
+      <md-grid-tile ng-repeat="reward in $storage.silverRewards">
+        <flippy
+          class="fancy"
+          ng-click="flip()"
+          flip-duration="500"
+          timing-function="ease-in-out"
+          style=" width: 100%;height: 100%; margin: 0px;">
+
+          <flippy-front>
+
+            <img src="{{$storage.imageLocation}}{{reward.picture}}" class="rewardImage">
+            <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.68); height: 36px;">
+              <h3 style="color: #FFF;">{{reward.rewardName}}</h3>
+            </md-grid-tile-footer>
+
+          </flippy-front>
+
+          <flippy-back>
+            <div style="background-color: #00317d; height: 100%; color: #FFFFFF; padding-top: 10px">
+              <div style="font-size: 20px;" class="row">
+                <div class="col">
+                  {{reward.rewardDescription}}
+                </div>
+              </div>
+
+              <div style="font-size: 15px; position: absolute; bottom:0;" class="row">
+                <div class="col">
+                  <button class="button button-energized button-block button-full" style="color:#000; font-size:10px" ng-click="redeemReward(reward)" ng-disabled="reward.pointCost > merlionStars">
+                    Redeem for:   <i class="icon mma-lion6"></i><span style="font-size: 18px">{{reward.pointCost}}</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </flippy-back>
+
+        </flippy>
+      </md-grid-tile>
+
+
+    </md-grid-list>
+
+    <md-subheader class="md-primary" style="font-size: 20px;">{{$storage.allTiers[2].name}} Tier Rewards</md-subheader>
+
+    <md-grid-list md-cols-sm="2" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3"
+                  md-gutter="10px">
+
+      <md-grid-tile ng-repeat="reward in $storage.goldRewards">
+        <flippy
+          class="fancy"
+          ng-click="flip()"
+          flip-duration="500"
+          timing-function="ease-in-out"
+          style=" width: 100%;height: 100%; margin: 0px;">
+
+          <flippy-front>
+
+            <img src="{{$storage.imageLocation}}{{reward.picture}}" class="rewardImage">
+            <md-grid-tile-footer style="background: rgba(0, 0, 0, 0.68); height: 36px;">
+              <h3 style="color: #FFF;">{{reward.rewardName}}</h3>
+            </md-grid-tile-footer>
+
+          </flippy-front>
+
+          <flippy-back>
+            <div style="background-color: #00317d; height: 100%; color: #FFFFFF; padding-top: 10px">
+              <div style="font-size: 20px;" class="row">
+                <div class="col">
+                  {{reward.rewardDescription}}
+                </div>
+              </div>
+
+              <div style="font-size: 15px; position: absolute; bottom:0;" class="row">
+                <div class="col">
+                  <button class="button button-energized button-block button-full" style="color:#000; font-size:10px" ng-click="redeemReward(reward)" ng-disabled="reward.pointCost > merlionStars">
+                    Redeem for:   <i class="icon mma-lion6"></i><span style="font-size: 18px">{{reward.pointCost}}</span>
                   </button>
                 </div>
               </div>
