@@ -5,7 +5,8 @@
 
     </md-subheader>
     <md-list>
-      <md-list-item class="md-3-line md-long-text" ng-repeat="aItem in $storage.aItems" style="font-size: 20px;" ng-click="itemDetails(aItem) ">
+      <md-list-item class="md-3-line md-long-text" ng-repeat="aItem in $storage.aItems" style="font-size: 20px;"
+                    ng-click="itemDetails(aItem) ">
         <!--<md-divider></md-divider>-->
         <img src="{{$storage.imageLocation}}{{aItem.pictureURLs[0].url}}" class="md-avatar">
 
@@ -13,8 +14,17 @@
 
           <h3>{{aItem.name}}</h3>
           <i class="icon ion-chevron-right" style="float:right"></i>
+
+
           <p><sup>by {{aItem.tenant.companyName}}</sup></p>
-          <p style="color: #00317d;">{{aItem.onlinePrice/$storage.exchangeRate|number:$storage.decimal}} {{$storage.currency}}</p>
+
+          <span ng-show="aItem.hasDiscount" style="color: maroon;">
+          <span><i class="zmdi zmdi-money-off" style="float:right; margin-right:30px">{{aItem.onlineDiscount}}% Off!</i></span>
+            <p style="color: maroon;">{{aItem.onlinePrice/$storage.exchangeRate * ((100 - aItem.onlineDiscount) / 100)|number:$storage.decimal}}
+              {{$storage.currency}}</p>
+            </span>
+          <p style="color: #00317d;" ng-hide="aItem.hasDiscount">{{aItem.onlinePrice/$storage.exchangeRate|number:$storage.decimal}}
+            {{$storage.currency}}</p>
           <md-divider></md-divider>
 
 
@@ -23,14 +33,14 @@
         <!--<md-button class="md-raised md-primary">More..</md-button>-->
         <!--<i class="zmdi zmdi-info"></i>-->
         <!--<md-button class="md-fab md-primary" style="font-size:30px;">-->
-          <!--<i class="zmdi zmdi-info"></i>-->
+        <!--<i class="zmdi zmdi-info"></i>-->
 
         <!--</md-button>-->
         <!--<md-button style="float:right" class="md-fab md-primary" ng-click="searchItems($storage.catReco.name)"> Go </md-button>-->
 
       </md-list-item>
 
-         </md-list>
+    </md-list>
   </ion-content>
 
 </ion-view>

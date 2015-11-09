@@ -2,7 +2,12 @@
   <ion-content>
     <md-card>
 
-      <div barcode-generator={{$storage.currentUser.id}} style="height:208px; text-align: center">
+      <!--<div barcode-generator={{$storage.currentUser.id}} style="height:208px; text-align: center">-->
+        <!--<div barcode-generator={{$storage.currentUser.id}} style="height:208px; text-align: center">-->
+      <!--<qr correction-level="'H'" size="250" text="hi"></qr>-->
+      <div style="text-align: center">
+      <qrcode data={{$storage.currentUser.id}} error-correction-level="H" size="300"></qrcode>
+        </div>
       </div>
       <md-card-content>
         <h2 class="md-title">My Membership ID</h2>

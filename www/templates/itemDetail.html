@@ -10,7 +10,7 @@
     <div class="list card stable-bg">
 
       <div class="item item-avatar">
-        <img src="{{$storage.itemSelected.tenant.logo}}">
+        <img src="{{$storage.imageLocation}}{{$storage.itemSelected.tenant.logo}}">
 
         <div class="itemHeader item-text-wrap">{{$storage.itemSelected.name}}</div>
 
@@ -46,14 +46,27 @@
         </md-input-container>
       </div>
 
+      <span ng-hide="$storage.itemSelected.hasDiscount">
       <div class="item item-icon-left positive" style="display: inline-block; width: 50%">
         <i class="icon ion-information-circled"></i>
         ${{adjustedPrice($storage.itemSelected.onlinePrice )| number:$storage.decimal}} {{$storage.currency}}
       </div>
+        </span>
+      <span ng-show="$storage.itemSelected.hasDiscount" style="color: maroon;">
+        <div style="color:maroon; padding-left: 20px;">
+          <b>{{$storage.itemSelected.onlineDiscount}}% Off!</b> (U.P. ${{adjustedPrice($storage.itemSelected.onlinePrice )| number:$storage.decimal}} {{$storage.currency}})
+        </div>
+      <div class="item item-icon-left positive" style="display: inline-block; width: 50%;color: maroon; font-size:15px">
+        <i class="icon zmdi zmdi-money-off" style="color: maroon;"></i>
+        ${{adjustedPrice($storage.itemSelected.onlinePrice) * ((100-$storage.itemSelected.onlineDiscount)/100)| number:$storage.decimal}} {{$storage.currency}}
+      </div>
+
+        </span>
+
       <div style="float: right; padding-right: 10px">
         <!--<button class="button button-assertive" ng-click="addToCart">Add to cart</button>-->
 
-        <ngcart-addtocart id="{{$storage.itemSelected.id}}" name="options" price="{{$storage.itemSelected.onlinePrice}}" data="$storage.itemSelected">
+        <ngcart-addtocart id="{{$storage.itemSelected.id}}" name="options" price="{{$storage.itemSelected.onlinePrice * ((100-$storage.itemSelected.onlineDiscount)/100)}}" data="$storage.itemSelected">
           Add To Cart
         </ngcart-addtocart>
         <!--<button ng-click="hi()"></button>-->

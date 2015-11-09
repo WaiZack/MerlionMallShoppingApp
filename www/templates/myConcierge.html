@@ -1,0 +1,50 @@
+<ion-view cache-view="false">
+
+  <ion-content>
+
+
+    <ion-item class="item-text-wrap" style="word-wrap: normal">
+      <div class="row">
+        <div class="col">
+          Date
+
+        </div>
+        <div class="col">
+          Service
+
+        </div>
+        <div class="col">
+          Mall
+
+        </div>
+
+      </div>
+    </ion-item>
+
+    <ion-item ng-repeat="concierge in $storage.myConciergeRequests" class="item-text-wrap">
+      <div class="row">
+        <div class="col">
+          <!--date-->
+          {{concierge.date | date: longDate}}
+
+        </div>
+
+        <div class="col">
+          <!--tracking-->
+          {{concierge.service}}
+        </div>
+        <div class="col">
+          <!--points-->
+          {{concierge.mall.name}}
+
+        </div>
+
+
+
+      </div>
+
+    </ion-item>
+
+
+  </ion-content>
+</ion-view>

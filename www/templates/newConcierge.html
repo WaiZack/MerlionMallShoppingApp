@@ -1,0 +1,52 @@
+<ion-view>
+
+  <ion-content>
+
+    <ion-list>
+
+      <ion-item class="settingItem" >
+
+
+        <form name="fbForm">
+          <md-input-container>
+            <label>Select a Mall</label>
+
+            <md-select ng-model="conciergeForm.mallSelected">
+
+              <md-option ng-repeat="mall in malls" ng-value="mall">
+                {{mall.name}} - {{mall.managementOffice.country == null? mall.managementOffice.region.name : mall.managementOffice.country.name}}
+              </md-option>
+
+            </md-select>
+
+
+          </md-input-container>
+
+          <md-input-container>
+            <label>Select a Concierge Service</label>
+
+            <md-select ng-model="conciergeForm.serviceSelected">
+
+              <md-option ng-repeat="service in services" ng-value="service">
+                {{service}}
+              </md-option>
+
+            </md-select>
+
+
+          </md-input-container>
+
+          <md-input-container flex="">
+            <label>Other Remarks</label>
+            <textarea ng-model="conciergeForm.remarks" columns="1" md-maxlength="300"></textarea>
+          </md-input-container>
+
+
+          <button class="button button-block button-energized" ng-click="sendRequest()" ng-disabled="conciergeForm.serviceSelected == null || conciergeForm.mallSelected == null">Submit</button>
+
+        </form>
+
+      </ion-item>
+
+  </ion-content>
+</ion-view>
